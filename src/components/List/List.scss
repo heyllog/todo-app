@@ -1,0 +1,34 @@
+.list {
+  li {
+    display: flex;
+    align-items: center;
+    padding: 10px 12px;
+    cursor: pointer;
+
+    &.active {
+      background: #fff;
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+      border-radius: 4px;
+    }
+
+    i {
+      display: inline-flex;
+      margin-right: 10px;
+
+      img {
+        opacity: 0.5;
+        width: 10px;
+        height: 10px;
+      }
+    }
+  }
+
+  &__main-item {
+    margin-bottom: 30px;
+  }
+
+  &__item {
+    margin-bottom: 5px;
+  }
+}
+
