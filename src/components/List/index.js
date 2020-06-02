@@ -1,18 +1,18 @@
 import React from 'react';
+import classNames from 'classnames';
+import Circle from "../Circle";
 
 import './List.scss';
 
-const List = ({items}) => {
+
+const List = ({className, items, onClick}) => {
    return (
-      <ul className="list">
+      // <ul className={className ? "list " + className : "list"}>
+      <ul className="list" onClick={onClick}>
          {items.map(item => (
-            <li class={item.active ? 'active' : ''}>
+            <li key={item.id} className={classNames(className, {active: item.active})}>
                <i>
-                  {item.icon ? (
-                     item.icon
-                  ) : (
-                     <i className={`badge badge--${item.color}`}/>
-                  )}
+                  {item.icon ? (item.icon) : <Circle color={item.color}/>}
                </i>
                <span>{item.name}</span>
             </li>
