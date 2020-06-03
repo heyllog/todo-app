@@ -1,4 +1,6 @@
 .list {
+  $self: &;
+
   margin-bottom: 30px;
 
   &__add-button {
@@ -15,6 +17,25 @@
     cursor: pointer;
     padding: 10px 12px;
 
+    &:hover {
+      background: rgba(255, 255, 255, 0.5)
+    }
+
+    &:hover #{$self}__remove-icon {
+      opacity: 0.2;
+    }
+
+    #{$self}__remove-icon {
+      opacity: 0;
+      margin-left: auto;
+      width: 10px;
+      height: 10px;
+
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+
     &.active {
       background: #ffffff;
       box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.04);
@@ -29,6 +50,7 @@
     i {
       display: inline-flex;
       margin-right: 8px;
+
       svg {
         path {
           fill: #7c7c7c;
