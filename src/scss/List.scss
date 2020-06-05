@@ -16,10 +16,7 @@
     align-items: center;
     cursor: pointer;
     padding: 10px 12px;
-
-    &:hover {
-      background: rgba(255, 255, 255, 0.5)
-    }
+    transition: background-color 0.15s ease-in-out;
 
     &:hover #{$self}__remove-icon {
       opacity: 0.2;
@@ -27,13 +24,19 @@
 
     #{$self}__remove-icon {
       opacity: 0;
-      margin-left: auto;
-      width: 10px;
-      height: 10px;
+      transition: opacity 0.15s ease-in-out;
 
       &:hover {
-        opacity: 0.6;
+        opacity: 0.8;
       }
+    }
+
+    span {
+      flex: 1;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.5);
     }
 
     &.active {
