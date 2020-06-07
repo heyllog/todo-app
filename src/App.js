@@ -6,6 +6,7 @@ import {List, AddList, Tasks} from './components';
 function App() {
    const [lists, setLists] = useState(null);
    const [colors, setColors] = useState(null);
+   const [chooseList, setChooseList] = useState(0);
 
    useEffect(() => {
       axios
@@ -26,6 +27,7 @@ function App() {
    return (
       <div className="todo">
          <div className="todo__sidebar">
+
             <List
                items={[
                   {
@@ -47,6 +49,7 @@ function App() {
                   }
                ]}
             />
+
             {lists ? (
                <List
                   items={lists}
@@ -54,14 +57,23 @@ function App() {
                      const newLists = lists.filter(item => item.id !== id);
                      setLists(newLists);
                   }}
+                  onChooseList={id => {
+                     setChooseList(id);
+                  }}
                   isRemovable
                />
             ) : (
                'Загрузка...'
             )}
+
             <AddList onAdd={onAddList} colors={colors}/>
+
          </div>
-         <div className="todo__tasks">{lists && <Tasks list={lists[1]}/>}</div>
+
+         <div className="todo__tasks">
+            {lists && <Tasks list={lists[chooseList]}/>}
+         </div>
+
       </div>
    );
 }

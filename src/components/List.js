@@ -8,7 +8,7 @@ import Badge from './Badge';
 
 import '../scss/List.scss';
 
-const List = ({items, isRemovable, onClick, onRemove}) => {
+const List = ({items, isRemovable, onChooseList, onRemove, onAddItem}) => {
    const removeList = item => {
       if (window.confirm('Вы действительно хотите удалить список?')) {
          axios.delete('http://localhost:3001/lists/' + item.id).then(() => {
@@ -18,11 +18,12 @@ const List = ({items, isRemovable, onClick, onRemove}) => {
    };
 
    return (
-      <ul onClick={onClick} className="list">
+      <ul onClick={onAddItem} className="list">
          {items.map((item, index) => (
             <li
                key={index}
                className={classNames(item.className, {active: item.active})}
+               onClick={() => onChooseList(item.id - 1)}
             >
                <i>{item.icon ? item.icon : <Badge color={item.color.name}/>}</i>
                <span>{item.name}</span>
